@@ -1,0 +1,219 @@
+@charset "utf-8";
+/*重置部分标签样式reset.css*/
+/*html和body不能减少*/
+
+html,
+body {
+	height: 100%;
+	overflow: hidden;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clear{
+	clear: both;
+}
+/*先将左右分好，左右分布要用float，记得清除浮动
+ * 然后在左右每一块内部分上下，
+ * 再然后，上下分完以后，在内部定义带有id的div作为画布，
+ * height要记得减去画布div的margin，也可以添加背景、边框等*/
+/*左右分，有二分，三分，四分和五分，如果有特殊需要，自己分,可以多层嵌套*/
+/*左右二分*/
+.left_left,.right_right{
+	width: calc(100%/2);
+	height: 100%;
+}
+/*左右三分*/
+.left,.center,.right{
+	width: calc(100%/3);
+	height: 100%;
+}
+.left32{
+	width: calc(100%*2/3);
+	height: 100%;
+}
+/*左右四分*/
+.left41{
+	width: calc(100%/4);
+	height: 100%;
+}
+.left42{
+	width: calc(100%*2/4);
+	height: 100%;
+}
+.left43{
+	width: calc(100%*3/4);
+	height: 100%;
+}
+/*左右五分*/
+.left51{
+	width: calc(100%/5);
+	height: 100%;
+}
+.left52{
+	width: calc(100%*2/5);
+	height: 100%;
+}
+.left53{
+	width: calc(100%*3/5);
+	height: 100%;
+}
+.left54{
+	width: calc(100%*4/5);
+	height: 100%;
+}
+/*左右分好，上下分，同样是二分、三分、四分、五分，除了二分要放两个class名*/
+/*按高度分*/
+.one{
+	width: 100%;
+	height:100%;
+	overflow: hidden;
+}
+.two{
+	width: 100%;
+	height: calc(100%/2);
+	overflow: hidden;
+}
+.three{
+	width: 100%;
+	overflow: hidden;
+}
+.three31{
+	height: calc(100%/3);
+}
+.three32{
+	height: calc(100%*2/3);
+}
+.four{
+	width: 100%;
+	overflow: hidden;
+}
+.four41{
+	height: calc(100%/4);
+}
+.four42{
+	height: calc(100%*2/4);
+}
+.four43{
+	height: calc(100%*3/4);
+}
+
+/*以上是没有margin，没有padding的外层边框，紧挨的*/
+/*以下是绘制图表的画布大小，宽高需要减去margin，似乎不用定义宽,不加padding,可以添加背景图或者边框*/
+
+.first1 {
+	/*减去的数值是边框总高和margin上下的高*/
+	height: calc(100% - 20px);
+	margin: 15px 5px 5px;
+	background: url(../images/ReportServer.png) 0% 0%/100% 100% no-repeat;
+}
+.second1 {
+	height: calc(100% - 20px);
+	margin: 15px 5px 5px;
+	background: url(../images/ReportServer1.png) 0% 0%/100% 100% no-repeat;
+}
+/*先分上下，再分左右*/
+.top_top,.bottom_bottom{
+	height: calc(100%/2);
+	width: 100%;
+}
+/*上下三分*/
+.top,.middle,.bottom{
+	height: calc(100%/3);
+	width: 100%;
+}
+.top32{
+	height: calc(100%*2/3);
+	width: 100%;
+}
+/*上下四分*/
+.top41{
+	height: calc(100%/4);
+	width: 100%;
+}
+.top42{
+	height: calc(100%*2/4);
+	width: 100%;
+}
+.top43{
+	height: calc(100%*3/4);
+	width: 100%;
+}
+/*上下五分*/
+.top51{
+	height: calc(100%/5);
+	width: 100%;
+}.top52{
+	height: calc(100%*2/5);
+	width: 100%;
+}.top53{
+	height: calc(100%*3/5);
+	width: 100%;
+}.top54{
+	height: calc(100%*4/5);
+	width: 100%;
+}
+/*上下之后是左右*/
+.top_one{
+	width: 100%;
+	height:100%;
+	overflow: hidden;
+}
+.top_two{
+	height: 100%;
+	width: calc(100%/2);
+	overflow: hidden;
+}
+.top_three{
+	height: 100%;
+	overflow: hidden;
+}
+.top_three31{
+	width: calc(100%/3);
+}
+.top_three32{
+	width: calc(100%*2/3);
+}
+.top_four{
+	height: 100%;
+	overflow: hidden;
+}
+.top_four41{
+	width: calc(100%/4);
+}
+.top_four42{
+	width: calc(100%*2/4);
+}
+.top_four43{
+	width: calc(100%*3/4);
+}
+.top_five{
+	height: 100%;
+	overflow: hidden;
+}
+.top_five51{
+	width: calc(100%/5);
+}
+.top_five52{
+	width: calc(100%*2/5);
+}
+.top_five53{
+	width: calc(100%*3/5);
+}
+.top_five54{
+	width: calc(100%*4/5);
+}
+
+
+
+/*自定义*/
+/*高度不能省,还要减去margin值*/
+.w_hlong{
+	height: calc(100% - 20px);
+	width: calc(100% - 10px);
+	margin: 15px 5px 5px;
+	background: url(../images/ReportServer.png) 0% 0%/100% 100% no-repeat;
+}
