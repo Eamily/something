@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表格滚动</title>
+	</head>
+	<body>
+		<div class="table-scroll" style="height: 120px;">
+			<!-- table不滚动的表头单独 -->
+			<div class="table_lb">
+				<div class="table_header">
+					<span>案号</span>
+					<span>当事人</span>
+					<span>承办人</span>
+					<span>超期时间</span>
+				</div>
+			</div>
+			<!-- table滚动的内容现有两层div（都有id），里面是table -->
+			<!-- 一层div，设置高度，overflow: hidden;position: relative; -->
+			<div id="tb_lb" style="height: 70%;overflow: hidden;position: relative;">
+				<!-- 第二层div，设置id， -->
+				<div id="tb_lb1" class="part_table">
+					<table border="0" cellspacing="0" cellpadding="5">
+						<tr>
+							<td>20181207003</td>
+							<td>陈大军</td>
+							<td>冯超强、李瑞杰</td>
+							<td>5天</td>
+						</tr>
+						<tr>
+							<td>20181209006</td>
+							<td>陈鹏汽配有限公司</td>
+							<td>李锐</td>
+							<td>15天</td>
+						</tr>
+						<tr>
+							<td>20181217003</td>
+							<td>李丽</td>
+							<td>刘同</td>
+							<td>6天</td>
+						</tr>
+						<tr>
+							<td>20181207012</td>
+							<td>李玉斌</td>
+							<td>冯强</td>
+							<td>25天</td>
+						</tr>
+						<tr>
+							<td>20190107001</td>
+							<td>陈笑</td>
+							<td>马陆</td>
+							<td>50天</td>
+						</tr>
+					</table>
+				</div>
+				<div id="tb_lb2" class="part_table"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//文字滚动
+			// 定时器名称
+			var MyMarhq = '';
+			clearInterval(MyMarhq);
+			
+			function tableScroll(tableid, tableid1, tableid2, speed, time) {
+				var demo = document.getElementById(tableid);
+				var demo1 = document.getElementById(tableid1);
+				var demo2 = document.getElementById(tableid2);
+			
+				if(demo1.offsetHeight > demo.offsetHeight) {
+					demo2.innerHTML = demo1.innerHTML;
+			
+					function Marquee() {
+						if(demo2.offsetTop - demo.scrollTop <= 0) {
+							demo.scrollTop -= demo1.offsetHeight;
+						} else {
+							demo.scrollTop++;
+						}
+					}
+					var time = setInterval(Marquee, speed);
+					demo.onmouseover = function() {
+						clearInterval(time);
+					}
+					demo.onmouseout = function() {
+						time = setInterval(Marquee, speed);
+					}
+				}
+			}
+			tableScroll('tb_lb', 'tb_lb1', 'tb_lb2', 50, MyMarhq);
+		</script>
+	</body>
+</html>

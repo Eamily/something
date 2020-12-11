@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表格、文字无缝滚动</title>
+		<style type="text/css">
+			.bg{
+				width: 500px;
+				height: 300px;
+				border: 1px solid #333333;
+			}
+			.table-head{
+				background-color: #0A76F1;
+				color: #FFFFFF;
+				height: 30px;
+				line-height: 30px;
+			}
+			.tab-content{
+				width: 100%;
+				height: 90%;
+				overflow: hidden;
+				position: relative;
+			}
+			.box{
+				width: 100%;
+			}
+			.box span{
+				display: inline-block;
+				width: 19%;
+				text-align: center;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bg">
+			<!-- 表格表头，不参与滚动 -->
+			<div class="table-head">
+				<div class="box">
+					<span>第一列</span>
+					<span>第二列</span>
+					<span>第三列</span>
+					<span>第四列</span>
+					<span>第五列</span>
+				</div>
+			</div>
+			<!-- 除去表头的主体内容，必要的样式是height：定值或百分比；overflow:hidden;position:relative; -->
+			<div id="tab-scroll" class="tab-content">
+				<!-- 内容div,里面可以是表格table，也可以是div -->
+				<div id="tab-scroll1">
+					<div class="box">
+						<span>内容第一列</span>
+						<span>内容第二列</span>
+						<span>内容第三列</span>
+						<span>内容第四列</span>
+						<span>内容第五列</span>
+					</div>
+					<div class="box">
+						<span>内容第一列</span>
+						<span>内容第二列</span>
+						<span>内容第三列</span>
+						<span>内容第四列</span>
+						<span>内容第五列</span>
+					</div>
+					<div class="box">
+						<span>内容第一列</span>
+						<span>内容第二列</span>
+						<span>内容第三列</span>
+						<span>内容第四列</span>
+						<span>内容第五列</span>
+					</div>
+					<div class="box">
+						<span>内容第一列</span>
+						<span>内容第二列</span>
+						<span>内容第三列</span>
+						<span>内容第四列</span>
+						<span>内容第五列</span>
+					</div>
+					<div class="box">
+						<span>内容第一列</span>
+						<span>内容第二列</span>
+						<span>内容第三列</span>
+						<span>内容第四列</span>
+						<span>内容第五列</span>
+					</div>
+					<div class="box">
+						<span>内容第一列</span>
+						<span>内容第二列</span>
+						<span>内容第三列</span>
+						<span>内容第四列</span>
+						<span>内容第五列</span>
+					</div>
+					<div class="box">
+						<span>内容第一列</span>
+						<span>内容第二列</span>
+						<span>内容第三列</span>
+						<span>内容第四列</span>
+						<span>内容第五列</span>
+					</div>
+					<div class="box">
+						<span>内容第一列</span>
+						<span>内容第二列</span>
+						<span>内容第三列</span>
+						<span>内容第四列</span>
+						<span>内容第五列</span>
+					</div>
+					<div class="box">
+						<span>内容第一列</span>
+						<span>内容第二列</span>
+						<span>内容第三列</span>
+						<span>内容第四列</span>
+						<span>内容第五列</span>
+					</div>
+					<!-- 以上内容高度刚刚好占满盒子高度，再增加就可以实现无缝滚动 -->
+					<div class="box">
+						<span>内容第一列</span>
+						<span>内容第二列</span>
+						<span>内容第三列</span>
+						<span>内容第四列</span>
+						<span>内容第五列</span>
+					</div>
+				</div>
+				<!-- 空div，存放滚动需要的新添加的一份与表格一模一样的数据 -->
+				<div id="tab-scroll2"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//文字滚动
+			// 设置定时器变量
+			var MyMarhq = '';
+			// 清除定时器（避免后期忘记清除定时器而越滚越快）
+			clearInterval(MyMarhq);
+
+			function tableScroll(tableid, tableid1, tableid2, speed, time) {
+				var demo = document.getElementById(tableid);
+				var demo1 = document.getElementById(tableid1);
+				var demo2 = document.getElementById(tableid2);
+				// 内容高度与容器高度比较，如果内容高度大于容器高度，则判定需要滚动，否则不滚动
+				if (demo1.offsetHeight > demo.offsetHeight) {
+					demo2.innerHTML = demo1.innerHTML;
+					// 第二个容器距离总容器顶部的距离与总容器滚动的距离,
+					// 当滚动完一组内容高度后,把总容器滚动高度减去一组内容高度,避免内容过多,
+					// 否则总容器滚动高度一直增加
+					function Marquee() {
+						if (demo2.offsetTop - demo.scrollTop <= 0) {
+							demo.scrollTop -= demo1.offsetHeight;
+						} else {
+							demo.scrollTop++;
+						}
+					}
+					// 根据滚动速度设置定时器
+					var time = setInterval(Marquee, speed);
+					// 鼠标移动到内容上时，移除定时器，停止滚动
+					demo.onmouseover = function() {
+						clearInterval(time);
+					}
+					// 鼠标移开时，添加定时器，开始滚动
+					demo.onmouseout = function() {
+						time = setInterval(Marquee, speed);
+					}
+				}
+			}
+			tableScroll('tab-scroll', 'tab-scroll1', 'tab-scroll2', 50, MyMarhq);
+		</script>
+	</body>
+</html>
